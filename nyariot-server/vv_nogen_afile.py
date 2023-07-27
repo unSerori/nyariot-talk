@@ -24,9 +24,8 @@ def talk_tumugi(text):
     # 再生を少し遅らせる（開始時ノイズが入るため）
     time.sleep(0.2) # 0.2秒遅らせる
 
-    while True:
-        # WAV データを直接再生する
-        stream.write(data)  
+    # WAV データを直接再生する
+    stream.write(data)  
 
     # ストリームを閉じる
     stream.stop_stream()
@@ -34,3 +33,7 @@ def talk_tumugi(text):
 
     # PyAudio のインスタンスを終了する
     p.terminate()
+
+
+# test
+talk_tumugi("こんにちは")
