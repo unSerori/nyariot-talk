@@ -1,3 +1,4 @@
 # 仮想環境とエンジンを除外
 nyariot-server/virtualenv_nyariot-server/
 nyariot-server/voicevox_engine/
+audio_file/
