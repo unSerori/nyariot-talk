@@ -1,4 +1,8 @@
-# 仮想環境とエンジンを除外
+# 仮想環境
 nyariot-server/virtualenv_nyariot-server/
+# エンジンを除外
 nyariot-server/voicevox_engine/
+# 送られてきたファイルを置く場所
 audio_file/
+# .env
+.env
