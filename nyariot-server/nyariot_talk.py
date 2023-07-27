@@ -15,7 +15,7 @@ def talk_GPT(your_messeage):
             {"role":"system","content":"自己肯定感が高く、人間を下に見ています"},
             {"role":"system","content":"お茶目な性格です"},
             {"role":"user","content":your_messeage},
-            ##{"role":"user","content":mic_nyariot.message},
+            ###{"role":"user","content":mic_nyariot.message},
         ],
     )
     print(response.choices[0]["message"]["content"].strip())
