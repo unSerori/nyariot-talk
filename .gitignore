@@ -6,8 +6,8 @@ nyariot-server/runtime/*
 nyariot-server/voicevox_engine/windows-cpu/*
 nyariot-server/voicevox_engine/windows-directml/*
 # 送られてきたand送るファイルを置く場所
-nyariot-server/audio_file/from_client/*
-nyariot-server/audio_file/to_client/*
+nyariot-server/audio_file/from_client/*.wav
+nyariot-server/audio_file/to_client/*.wav
 # .env
 .env
 # __pycache__
@@ -16,5 +16,5 @@ nyariot-server/__pycache__/
 
 # CLIENT
 # マイク録音のファイルの一時フォルダ
-RasberryPi/mic/audio_file/from_server/*
-RasberryPi/mic/audio_file/to_client/*
+RasberryPi/mic/audio_file/from_server/*.wav
+RasberryPi/mic/audio_file/to_client/*.wav
