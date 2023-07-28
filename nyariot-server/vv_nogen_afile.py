@@ -4,13 +4,14 @@ import pyaudio # wavファイルを再生する
 import time # タイムラグをつける
 
 # チャットからもらった値を入れて鯖に投げる
-def talk_tumugi(text):
+def talk_vv_nogen_afile(text):
     # 音声合成クエリの作成
     res1 = requests.post('http://127.0.0.1:50021/audio_query',params = {'text': text, 'speaker': 8})
     # 音声合成データの作成
     res2 = requests.post('http://127.0.0.1:50021/synthesis',params = {'speaker': 8},data=json.dumps(res1.json()))
     # 
     data = res2.content
+    
 
     # PyAudioのインスタンスを生成
     p = pyaudio.PyAudio()
@@ -36,4 +37,4 @@ def talk_tumugi(text):
 
 
 # test
-talk_tumugi("こんにちは")
+talk_vv_nogen_afile("こんにちは")

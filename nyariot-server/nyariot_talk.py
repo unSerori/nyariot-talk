@@ -1,9 +1,13 @@
 import os
-## import mic_nyariot
+import dotenv  # ファイルからAPIキーをロードする
+# import mic_nyariot
 import openai
 
 # APIキーの設定
-openai.api_key = "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"
+dotenv.load_dotenv()
+openai.api_key = os.environ.get("openai_api_key")  # .envからAPIキーを持ってくる。
+# openai.api_key = os.environ["openai_api_key"]  # .envからAPIキーを持ってくる。
+# print(openai.api_key) # debug
 
 def talk_GPT(your_messeage):
     response = openai.ChatCompletion.create(
@@ -18,4 +22,8 @@ def talk_GPT(your_messeage):
             ###{"role":"user","content":mic_nyariot.message},
         ],
     )
-    print(response.choices[0]["message"]["content"].strip())
+    # print(response.choices[0]["message"]["content"].strip()) # debug
+    return response.choices[0]["message"]["content"].strip()
+
+
+talk_GPT("こんにちは。あなたは何？")

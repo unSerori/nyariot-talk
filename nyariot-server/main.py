@@ -12,13 +12,15 @@
 
 
 import subprocess  # system()でバッチを起動
-import requests
-import socket  # 鯖の疎通確認
+import requests  # 鯖の疎通確認
+# import socket  # 鯖の疎通確認
 import time  # 一時停止
 
 import vv_transcribe_audio  # 文字起こし
-
-
+import nyariot_talk  # チャットGPTに投げる
+import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
+import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
+# import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 
 
 # サーバー起動
@@ -39,18 +41,21 @@ while True:
     except:
         pass
 
+print("hoge")
 
-# 全体をwhileで回し続ける
+'''# 全体をwhileで回し続ける
 while True:
     # 音声を受け取る
-
+    # input("音声が来るまで待機。")
 
     # 文字起こし
     recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
-    print(recog_text) # debug
+    print(recog_text)  # debug
 
 
     # chatGPTに投げる。テキストが帰ってくる
-
+    chat_text = nyariot_talk.talk_GPT(recog_text)
+    print(chat_text)  # debug
 
     # テキストを、クエリデータ生成してvv_engineに投げる
+    #vv_gen_afile.talk_vv_gen_afile(chat_text)'''
