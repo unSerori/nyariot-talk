@@ -7,7 +7,7 @@ samp_rate = 44100 # 44.1kHz　サンプリング周波数
 chunk = 4096 # 2^12 一度に取得するデータ数
 record_secs = 5 # 録音する秒数
 dev_index = 0 # デバイス番号
-wav_output_filename = './micWAV/micIn.wav' # 出力するファイル
+wav_output_filename = './audio_file/to_server/micIn.wav' # 出力するファイル
 
 audio = pyaudio.PyAudio() # create pyaudio instantiation
 
