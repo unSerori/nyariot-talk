@@ -36,5 +36,4 @@ def talk_vv_nogen_afile(text):
     p.terminate()
 
 
-# test
-# talk_vv_nogen_afile("こんにちは")
+# talk_vv_nogen_afile("こんにちは") # test

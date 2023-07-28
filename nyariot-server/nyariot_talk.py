@@ -21,8 +21,8 @@ def talk_GPT(your_message):
             ###{"role":"user","content":mic_nyariot.message},
         ],
     )
-    print(response.choices[0]["message"]["content"].strip()) # debug
+    # print(response.choices[0]["message"]["content"].strip()) # debug
     return response.choices[0]["message"]["content"].strip()
 
 
-# talk_GPT("こんにちは。あなたは何？")
+# talk_GPT("こんにちは。あなたは何？") # test

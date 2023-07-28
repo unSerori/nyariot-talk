@@ -12,14 +12,13 @@ def talk_vv_gen_afile(text):
 
 
     # wavデータの生成
-    with open('test.wav', mode='wb') as f:
+    with open('audio_file/to_client/vv_voice.wav', mode='wb') as f:
         f.write(res2.content)
 
 
+
+# talk_vv_gen_afile("こんにちは！元気？今日も一日頑張ろうね！明日が当日だよ！") # test
 '''if __name__ == "__main__":
     # test
     talk_vv_gen_afile("こんにちは")
     '''
-
-
-#alk_vv_gen_afile("こんにちは")
