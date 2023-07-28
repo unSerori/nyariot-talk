@@ -47,7 +47,8 @@ print("本処理開始＾～") # debug
 # 全体をwhileで回し続ける
 while True:
     # 音声を受け取る
-    input("音声が来るまで待機。")
+    recording.recording_audio()
+
 
     # 文字起こし
     recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
