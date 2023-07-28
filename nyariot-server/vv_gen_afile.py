@@ -1,6 +1,6 @@
 import requests # API
 import json # APIで取得したJSONデータの処理
-""
+
 
 # チャットからもらった値を入れて鯖に投げる
 # text = "こんにちは！元気？今日も一日頑張ろうね！"
@@ -20,3 +20,6 @@ def talk_vv_gen_afile(text):
     # test
     talk_vv_gen_afile("こんにちは")
     '''
+
+
+#alk_vv_gen_afile("こんにちは")
