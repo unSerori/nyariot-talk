@@ -37,4 +37,4 @@ def talk_vv_nogen_afile(text):
 
 
 # test
-talk_vv_nogen_afile("こんにちは")
+# talk_vv_nogen_afile("こんにちは")

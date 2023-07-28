@@ -23,7 +23,5 @@ def talk_GPT(your_messeage):
         ],
     )
     # print(response.choices[0]["message"]["content"].strip()) # debug
-    return response.choices[0]["message"]["content"].strip()
-
-
-talk_GPT("こんにちは。あなたは何？")
+    return response.choices[0]["message"]["content"].strip(# tests
+# talk_GPT("こんにちは。あなたは何？")
