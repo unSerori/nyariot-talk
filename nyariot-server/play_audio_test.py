@@ -24,10 +24,19 @@ def play_wav_audio():
 
     # 音声を再生
     data = wf.readframes(CHUNK)
-    while data != '':
+    while len(data) > 0:
         stream.write(data)
         data = wf.readframes(CHUNK)
+
     stream.close()
     p.terminate()
     print("a")
     return
+
+
+"""
+    while data != '':
+        stream.write(data)
+        data = wf.readframes(CHUNK)
+
+"""
