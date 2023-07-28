@@ -21,6 +21,7 @@ import nyariot_talk  # チャットGPTに投げる
 import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
 import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 # import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
+import play_audio_test  # 音声を再生
 
 
 # サーバー起動
@@ -41,8 +42,8 @@ while True:
     except:
         pass
 
-print("hoge")
 
+print("本処理開始＾～") # debug
 # 全体をwhileで回し続ける
 while True:
     # 音声を受け取る
@@ -63,4 +64,9 @@ while True:
 
 
     # 生成物をクライアントに投げて再生してもらう
-    
+    # 再生しとく
+    play_audio_test.play_wav_audio()
+    print("b")
+
+
+    # 書き起こしの際削除
