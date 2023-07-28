@@ -26,3 +26,4 @@ def talk_GPT(your_message):
 
 
 # talk_GPT("こんにちは。あなたは何？")
+# talk_GPT("こんにちは。あなたは何？")
