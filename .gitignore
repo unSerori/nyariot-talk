@@ -1,6 +1,7 @@
 # SERVER
 # 仮想環境
 nyariot-server/virtualenv_nyariot-server/*
+nyariot-server/runtime/*
 # エンジンを除外
 nyariot-server/voicevox_engine/windows-cpu/*
 nyariot-server/voicevox_engine/windows-directml/*
