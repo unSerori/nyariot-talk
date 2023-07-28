@@ -3,7 +3,6 @@
 #     通信はwifi？
 # 受け取った音声を再生
 
-
 # サーバー起動
 # 音声を受け取る
 # 文字起こし
@@ -12,47 +11,51 @@
 # 生成物を子機に投げて再生してもらう
 
 
-
-
-import os  # system()でバッチを起動
-import socket  # 鯖の疎通確認
+import subprocess  # system()でバッチを起動
+import requests  # 鯖の疎通確認
+# import socket  # 鯖の疎通確認
 import time  # 一時停止
 
 import vv_transcribe_audio  # 文字起こし
-
-
+import nyariot_talk  # チャットGPTに投げる
+import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
+import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
+# import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 
 
 # サーバー起動
-command = "start" + " " + "run-vv_engine.bat"  # start + バッチファイルへのパス + args
-os.system(command)  # バッチ起動
+subprocess.Popen(["start", "run-vv_engine.bat"], shell=True)  # バッチ起動
+engine_port = 50021
 
-time.sleep(5)
 
 # リクエストを送り正常起動していれば次の処理に進む
-connection = True
-while socket.socket().accept():
+while True:
     try:
-        server = socket.socket().connect(("localhost", 50021))  # withは確実なリソース開放が目的っぽい。接続出来たらbreakして以降の処理に移る
-        connection, address = socket.accept()
-        connection = (connection == False)
-    except socket.error as e:
+        print("応答を待機しています...")
+        engine_info = requests.get(f"http://127.0.0.1:{engine_port}/supported_devices")
+        print(engine_info)
+        if engine_info.status_code == 200:
+            engine_device_info = engine_info.json()
+            break
         time.sleep(1)
+    except:
+        pass
+
+print("hoge")
+
+'''# 全体をwhileで回し続ける
+while True:
+    # 音声を受け取る
+    # input("音声が来るまで待機。")
+
+    # 文字起こし
+    recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
+    print(recog_text)  # debug
 
 
-# 全体をwhileで回し続ける
-'''while True:
-    hoge
-'''
-# 音声を受け取る
+    # chatGPTに投げる。テキストが帰ってくる
+    chat_text = nyariot_talk.talk_GPT(recog_text)
+    print(chat_text)  # debug
 
-
-# 文字起こし
-recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
-print(recog_text) # debug
-
-
-# chatGPTに投げる。テキストが帰ってくる
-
-
-# テキストを、クエリデータ生成してvv_engineに投げる
+    # テキストを、クエリデータ生成してvv_engineに投げる
+    #vv_gen_afile.talk_vv_gen_afile(chat_text)'''
