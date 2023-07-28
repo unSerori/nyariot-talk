@@ -9,6 +9,8 @@ nyariot-server/audio_file/from_client/*
 nyariot-server/audio_file/to_client/*
 # .env
 .env
+# __pycache__
+nyariot-server/__pycache__/
 
 
 # CLIENT
