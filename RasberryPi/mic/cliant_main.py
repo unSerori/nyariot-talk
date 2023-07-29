@@ -9,63 +9,32 @@ import time
 import datetime
 import sys
 
-
-#socketライブラリをインポート
-import socket
-ip_address = '192.168.10.115' #サーバー
-port = 5000 #ポート番号
-buffer_size = 4092 #一度に受け取るデータの大きさを指定
-
 import mik
 import speaker
+
+import base64
+import responder
+
+from http.server import *
 
 # Multi Process import
 from concurrent.futures import ThreadPoolExecutor
 
-recieve_message = ""
-recieve_status = True
-#クライアント用インスタンスを生成
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# サーバーに接続を要求する（IPアドレスとポート番号を指定）
-client.connect((ip_address, port))
+ip = "0.0.0.0"
+port = 8887
 
-speak_mode = False
+httpd = HTTPServer(('', port), SimpleHTTPRequestHandler)
+httpd.serve_forever()
 
-def client(ip, port, fname):    #ファイル送信
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((ip, port))
-        try:
-            with open(fname, mode='rb') as f:
-                for line in f:
-                    s.sendall(line)
-                    data = s.recv(1024)
-                print(repr(data.decode()))
-        except:
-            pass
-
-def server(ip, port, ext):    #ファイル受信
-    output_list = []
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((ip, port))
-        s.listen(1)
-        while True:
-            conn, addr = s.accept()
-            with conn:
-                dt_now = datetime.datetime.now()
-                fname = "./audio_file/from_server/nyariott." + ext
-                with open(fname, mode="ab") as f:
-                    while True:
-                        data = conn.recv(1024)
-                        if not data:
-                            break
-                        f.write(data)
-                        conn.sendall(b'Received done')
-                    speak_mode = True
-                    exit()
 
 def file_receive():
-    while True:
-        server(ip_address, port, 'wav')
+    @api.route("/")
+    async def on_post(req, resp):
+        data = await req.media()
+        data_bytes = base64.b64decode(data['file'].encode())
+
+        with open("wav_file.wav", 'bw') as f:
+            f.write(data_bytes)
 
 # FileSystemEventHandler の継承クラスを作成
 class FileChangeHandler(FileSystemEventHandler):
@@ -115,6 +84,12 @@ def fileCheckObserver():
             print("Error")
             observer.stop()
         observer.join()
+
+
+
+
+if __name__ == "__main__":
+    run_http_server()
 
 with ThreadPoolExecutor(3) as executor:
     executor.submit(mik.record)

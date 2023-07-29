@@ -1,8 +1,11 @@
-import pygame.mixer
+import sounddevice as sd
+import soundfile as sf
 
 def speak():
-  pygame.mixer.init()
-  wav_sound = pygame.mixer.Sound('./audio_file/from_server/nyariott.wav')
-  wav_sound.play()
-  while pygame.mixer.get_busy():
-      pass
+	filepath = "./audio_file/from_server/nyariott.wav"
+
+	sig, sr = sf.read(filepath, always_2d = True)
+	sd.play(sig, sr)
+
+	sd.wait()
+	print("end")
