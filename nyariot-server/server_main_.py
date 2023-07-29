@@ -16,7 +16,7 @@ import requests  # 鯖の疎通確認
 # import socket  # 鯖の疎通確認
 import time  # 一時停止
 
-# import recording  # 録音する
+import recording  # 録音する
 import vv_transcribe_audio  # 文字起こし
 import nyariot_talk  # チャットGPTに投げる
 import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
@@ -48,7 +48,7 @@ print("本処理開始＾～") # debug
 # 全体をwhileで回し続ける
 while True:
     # 音声を受け取る
-    # recording.recording_audio()
+    recording.recording_audio()
 
 
     # 文字起こし

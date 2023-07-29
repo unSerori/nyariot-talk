@@ -17,7 +17,7 @@ def talk_vv_gen_afile(text):
 
 
 
-# talk_vv_gen_afile("こんにちは！元気？今日も一日頑張ろうね！明日が当日だよ！") # test
+# talk_vv_gen_afile("こんにちは！元気？今日も一日頑張ろうね！今日が当日だよ！") # test
 '''if __name__ == "__main__":
     # test
     talk_vv_gen_afile("こんにちは")
