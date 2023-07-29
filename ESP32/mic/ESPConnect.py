@@ -1,7 +1,7 @@
 #ESP32-PC間通信用プログラム(PC側)
 #socketライブラリをインポート
 import socket
-import time
+import time 
 import pygame
 import numpy as np
 import scipy
