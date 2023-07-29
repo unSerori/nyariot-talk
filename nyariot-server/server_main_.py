@@ -23,12 +23,15 @@ import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
 import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 # import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 import play_audio_test  # 音声を再生
+'''print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
 
 # サーバー起動
-subprocess.Popen(["start", "run-vv_engine.bat"], shell=True)  # バッチ起動
-engine_port = 50021
+subprocess.Popen(["start", "C:/Users/2230105/OneDrive - yamaguchigakuen/デスクトップ/Hackathon/geek_kanazawa2023/nyariot-talk/nyariot-server/run-vv_engine.bat"], shell=True)  # バッチ起動
 
+print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBbb")
+'''
+engine_port = 50021
 
 # リクエストを送り正常起動していれば次の処理に進む
 while True:
@@ -54,6 +57,8 @@ while True:
     # 文字起こし
     recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
     print("debug: recog_text: " + recog_text)  # debug
+    if not recog_text:  # 文字起こせなかったら次ループに逃げる
+        continue
 
 
     # chatGPTに投げる。テキストが帰ってくる

@@ -9,6 +9,9 @@ openai.api_key = os.environ.get("openai_api_key")  # .envからAPIキーを持�
 # print(openai.api_key) # debug
 
 def talk_GPT(your_message):
+    if not your_message:  # 空文字なら作らず帰る # モジュール単体動作のために書いておく
+        return
+
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -31,4 +34,7 @@ def talk_GPT(your_message):
     return response.choices[0]["message"]["content"].strip()
 
 
-talk_GPT("きみの名前は？") # test
+text = ""
+print("text")  # 
+aa = talk_GPT(text) # test
+print("aa")  # None

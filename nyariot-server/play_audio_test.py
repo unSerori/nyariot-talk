@@ -4,7 +4,7 @@ import wave  # wavの再生
 
 def play_wav_audio():
     # パスを置いとく
-    file_path = "audio_file/to_client/vv_voice.wav"
+    file_path = "nyariot-server/audio_file/to_client/vv_voice.wav"
     CHUNK = 1024
 
     # ファイルがあるかどうかを見る

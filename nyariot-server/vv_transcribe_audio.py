@@ -3,7 +3,7 @@ import speech_recognition as sr
 
 
 r = sr.Recognizer()  # インスタンス
-audio_file_path = "audio_file/from_client/user_voice.wav"
+audio_file_path = "nyariot-server/audio_file/from_client/user_voice.wav"
 
 def recog_input_voice():
     with sr.AudioFile(audio_file_path) as source: # waveファイルから
