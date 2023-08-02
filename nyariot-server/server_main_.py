@@ -11,6 +11,7 @@
 # 生成物をクライアントに投げて再生してもらう
 
 
+import os
 import subprocess  # system()でバッチを起動
 import requests  # 鯖の疎通確認
 # import socket  # 鯖の疎通確認
@@ -23,6 +24,8 @@ import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
 import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 # import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 import play_audio_test  # 音声を再生
+
+path = os.getcwd
 '''print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 
 
