@@ -12,7 +12,7 @@ def talk_vv_gen_afile(text):
 
 
     # wavデータの生成
-    with open('nyariot-server/audio_file/to_client/vv_voice.wav', mode='wb') as f:
+    with open('audio_file/to_client/vv_voice.wav', mode='wb') as f:
         f.write(res2.content)
 
 

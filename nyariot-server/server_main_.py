@@ -11,12 +11,15 @@
 # 生成物をクライアントに投げて再生してもらう
 
 
-import os
+
+
+# もじゅーるいんぽーと
+import os  # パス確認
 import subprocess  # system()でバッチを起動
 import requests  # 鯖の疎通確認
 # import socket  # 鯖の疎通確認
 import time  # 一時停止
-
+# 自作もじゅーる
 import recording  # 録音する
 import vv_transcribe_audio  # 文字起こし
 import nyariot_talk  # チャットGPTに投げる
@@ -25,16 +28,24 @@ import vv_gen_afile  # テキストを、クエリデータ生成してvv_engine
 # import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 import play_audio_test  # 音声を再生
 
-path = os.getcwd
-'''print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
+
+
+# パスの確認
+print("path")  # os.chdir()
+print("os.getcwd(): カレントディレクトリ(コマンドの実行場所の絶対パス): " + os.getcwd())
+print("__file__: 実行ファイルの絶対パス: " + __file__)
+print("os.path.dirname(__file__): 実行ファイルのディレクトリの絶対パス: " + os.path.dirname(__file__))
+print("os.path.basename(__file__): 実行ファイルのファイル名: " + os.path.basename(__file__))
+
+os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
+print("os.getcwd(): カレントディレクトリ(コマンドの実行場所の絶対パス): " + os.getcwd())  # カレントディレクトリ確認
 
 
 # サーバー起動
-subprocess.Popen(["start", "C:/Users/2230105/OneDrive - yamaguchigakuen/デスクトップ/Hackathon/geek_kanazawa2023/nyariot-talk/nyariot-server/run-vv_engine.bat"], shell=True)  # バッチ起動
-
-print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBbb")
-'''
+subprocess.Popen(["start", "run-vv_engine.bat"], shell=True)  # バッチ起動
 engine_port = 50021
+
 
 # リクエストを送り正常起動していれば次の処理に進む
 while True:
@@ -51,9 +62,11 @@ while True:
 
 
 print("本処理開始＾～") # debug
+
+
 # 全体をwhileで回し続ける
 while True:
-    # 音声を受け取る
+    # 録音 本来は # 音声を受け取る******************
     recording.recording_audio()
 
 
@@ -73,10 +86,9 @@ while True:
     vv_gen_afile.talk_vv_gen_afile(chat_text)
 
 
-    # 生成物をクライアントに投げて再生してもらう
-    # 再生しとく
+    # 再生しとく 本来は # 生成物をクライアントに投げて再生してもらう******************
     play_audio_test.play_wav_audio()
-    print("b")
 
+    input("pause")
 
     # 書き起こしの際削除
