@@ -1,3 +1,9 @@
+'''
+chatGPTからもらった文字列をVVに投げて音声ファイルを作る
+返り血はなし
+'''
+
+import os
 import requests # API
 import json # APIで取得したJSONデータの処理
 
@@ -12,13 +18,12 @@ def talk_vv_gen_afile(text):
 
 
     # wavデータの生成
+    os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
     with open('audio_file/to_client/vv_voice.wav', mode='wb') as f:
         f.write(res2.content)
 
 
 
-# talk_vv_gen_afile("こんにちは！元気？今日も一日頑張ろうね！今日が当日だよ！") # test
-'''if __name__ == "__main__":
-    # test
-    talk_vv_gen_afile("こんにちは")
-    '''
+if __name__ == "__main__":
+    talk_vv_gen_afile("こんにちは！元気？今日も一日頑張ろうね！今日が当日だよ！") # test
+    # talk_vv_gen_afile("こんにちは！元気？今日も一日頑張ろうね！今日が当日だよ！") # test

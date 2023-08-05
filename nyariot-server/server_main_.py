@@ -23,7 +23,6 @@ import time  # 一時停止
 import recording  # 録音する
 import vv_transcribe_audio  # 文字起こし
 import nyariot_talk  # チャットGPTに投げる
-import vv_transcribe_audio  # vv鯖に投げて音声ファイルを作る
 import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 # import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 import play_audio_test  # 音声を再生
@@ -39,7 +38,7 @@ print("os.path.dirname(__file__): 実行ファイルのディレクトリの絶�
 print("os.path.basename(__file__): 実行ファイルのファイル名: " + os.path.basename(__file__))
 
 os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
-print("os.getcwd(): カレントディレクトリ(コマンドの実行場所の絶対パス): " + os.getcwd())  # カレントディレクトリ確認
+print("os.getcwd(): カレントディレクトリ(コマンドの実行場所の絶対パス): " + os.getcwd())  # カレントディレクトリ確認 # debug
 
 
 # サーバー起動

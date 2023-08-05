@@ -1,8 +1,16 @@
+'''
+マイクで録音
+返り血なし、音声ファイルを生成
+'''
+
+import os
 import sounddevice as sd  # マイクを使いたい
 import numpy as np  # なんか表示出る
 import soundfile as sf  # NumPy配列である録音信号をwav形式で保存する
 
 def recording_audio():
+    os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
+
 
     duration = 6  # 10秒間収音する
 
@@ -32,3 +40,6 @@ def recording_audio():
     # 録音信号のNumPy配列をwav形式で保存
     sf.write("audio_file/from_client/user_voice.wav", myrecording, sr_in)
 
+
+if __name__ == "__main__":
+    recording_audio()

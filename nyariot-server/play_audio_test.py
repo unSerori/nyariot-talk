@@ -1,3 +1,8 @@
+'''
+録音の再生
+返り血はなし
+'''
+
 import pyaudio  # オーディオ処理
 import wave  # wavの再生
 

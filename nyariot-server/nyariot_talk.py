@@ -1,3 +1,8 @@
+'''
+chatGPTから返答をもらう。
+返り血は文字列
+'''
+
 import os
 import dotenv  # ファイルからAPIキーをロードする
 import openai
@@ -40,4 +45,5 @@ def talk_GPT(your_message):
 
 
 if __name__ == "__main__":
-    talk_GPT("") # test
+    talk_GPT("こんにちは！元気？今日も一日頑張ろうね！") # test
+    # talk_GPT("") # test
