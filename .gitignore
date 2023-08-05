@@ -3,8 +3,7 @@
 nyariot-server/virtualenv_nyariot-server/*
 nyariot-server/runtime/*
 # エンジンを除外
-nyariot-server/voicevox_engine/windows-cpu/*
-nyariot-server/voicevox_engine/windows-directml/*
+nyariot-server/voicevox_engine/*/*
 # 送られてきたand送るファイルを置く場所
 nyariot-server/audio_file/from_client/*.wav
 nyariot-server/audio_file/to_client/*.wav
