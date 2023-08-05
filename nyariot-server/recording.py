@@ -1,5 +1,5 @@
 import sounddevice as sd  # マイクを使いたい
-import numpy as np  # 
+import numpy as np  # なんか表示出る
 import soundfile as sf  # NumPy配列である録音信号をwav形式で保存する
 
 def recording_audio():
@@ -30,5 +30,5 @@ def recording_audio():
     print(myrecording.shape) #=> (duration * sr_in, channels)
 
     # 録音信号のNumPy配列をwav形式で保存
-    sf.write("nyariot-server/audio_file/from_client/user_voice.wav", myrecording, sr_in)
+    sf.write("audio_file/from_client/user_voice.wav", myrecording, sr_in)
 

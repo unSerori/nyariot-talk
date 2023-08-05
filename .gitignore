@@ -14,7 +14,15 @@ nyariot-server/audio_file/to_client/*.wav
 nyariot-server/__pycache__/
 
 
+
+
 # CLIENT
 # マイク録音のファイルの一時フォルダ
 RasberryPi/mic/audio_file/from_server/*.wav
 RasberryPi/mic/audio_file/to_server/*.wav
+
+
+
+
+# 空フォルダを保持
+!.gitignore

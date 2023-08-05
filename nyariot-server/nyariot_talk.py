@@ -33,18 +33,11 @@ def talk_GPT(your_message):
             ###{"role":"user","content":mic_nyariot.message},
         ],
     )
-    print(your_message)
-    print(response.choices[0]["message"]["content"].strip()) # debug
+    if __name__ == "__main__": # debug
+        print(your_message) # debug
+        print(response.choices[0]["message"]["content"].strip()) # debug
     return response.choices[0]["message"]["content"].strip()
 
 
-talk_GPT("にゃりおっと、一緒に通話しよ") # test
-'''<<<<<<< HEAD
-text = ""
-print("text")  # 
-aa = talk_GPT(text) # test
-print("aa")  # None
-=======
-talk_GPT("いいよ") # test
->>>>>>> eef39a578350299ee1a862317fc553fe79c497e3
-'''
+if __name__ == "__main__":
+    talk_GPT("") # test
