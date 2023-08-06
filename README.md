@@ -5,16 +5,7 @@
 
 2.
 "nyariot-server/virtualenv_nyariot-server": 仮想環境はvirtualenvで作成。
-パッケージは
-{
-    "リクエスト": requests,
-    "文字起こし": speech_recognition,
-    "apiキーをロードするため": python-dotenv(impot dotenv),
-    "chatGPTのAPI": openai,
-    "録音の再生": pyaudio,
-    "wavの再生": wave,
-}
-などを入れた。
+パッケージはrequirements.txtから入れてください。
 
 3.
 "nyariot-server/voicevox_engine/windows-cpu": エンジンは [https://github.com/VOICEVOX/voicevox/releases/tag/0.14.7] からビルド済みのvoicevox_engine-windows-cpu-0.14.5.7z.001 を使わせていただいた。
