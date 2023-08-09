@@ -7,14 +7,14 @@ import pyaudio  # オーディオ処理
 import wave  # wavの再生
 
 
-def play_wav_audio():
+def play_wav_audio(file_name):
     # パスを置いとく
-    file_path = "audio_file/to_client/vv_voice.wav"
+    file_path = "audio_file/to_client/"
     CHUNK = 1024
 
     # ファイルがあるかどうかを見る
     try:
-        wf = wave.open(file_path, "r")
+        wf = wave.open(file_path + file_name, "r")
     except FileNotFoundError: #ファイルが存在しなかった場合
         print("[Error 404] No such file or directory: " + file_path)
         return 0

@@ -43,9 +43,8 @@ print("__file__: 実行ファイルの絶対パス: " + __file__)
 print("os.path.dirname(__file__): 実行ファイルのディレクトリの絶対パス: " + os.path.dirname(__file__))
 print("os.path.basename(__file__): 実行ファイルのファイル名: " + os.path.basename(__file__))
 
-os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
+os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書く
 print("os.getcwd(): カレントディレクトリ(コマンドの実行場所の絶対パス): " + os.getcwd())  # カレントディレクトリ確認 # debug
-
 
 # サーバー起動
 subprocess.Popen(["start", "run-vv_engine.bat"], shell=True)  # バッチ起動
@@ -77,23 +76,26 @@ while True:
 
     # 文字起こし
     recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
-    print("debug: recog_text: " + recog_text)  # debug
-    if not recog_text:  # 文字起こせなかったら次ループに逃げる
-        continue
 
 
-    # chatGPTに投げる。テキストが帰ってくる
-    chat_text = nyariot_talk.talk_GPT(recog_text)
-    print("debug: chat_text: " + chat_text)  # debug
+    if recog_text:  # 変数の中身が存在するなら
+        # chatGPTに投げる。テキストが帰ってくる
+        chat_text = nyariot_talk.talk_GPT(recog_text)
+        print("debug: recog_text: " + recog_text)  # debug
+        print("debug: chat_text: " + chat_text)  # debug
+
+        # テキストを、クエリデータ生成してvv_engineに投げる
+        vv_gen_afile.talk_vv_gen_afile(chat_text)
+
+        # 再生しとく 本来は # 生成物をクライアントに投げて再生してもらう******************
+        play_audio_test.play_wav_audio("vv_voice.wav")
 
 
-    # テキストを、クエリデータ生成してvv_engineに投げる
-    vv_gen_afile.talk_vv_gen_afile(chat_text)
+    else:   # 文字起こせなかったらchatGPTをスキップ
+        chat_text = "ごめん、よく聞こえなかった" 
+        print("debug: chat_text: " + chat_text + " (エラー)")  # debug
 
+        # 再生しとく 本来は # 生成物をクライアントに投げて再生してもらう******************
+        play_audio_test.play_wav_audio("vv_voice_could_not_be_transcribed.wav")
 
-    # 再生しとく 本来は # 生成物をクライアントに投げて再生してもらう******************
-    play_audio_test.play_wav_audio()
-
-    input("pause")
-
-    # 書き起こしの際削除
+    print("")

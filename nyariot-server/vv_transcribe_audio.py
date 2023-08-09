@@ -8,7 +8,7 @@ import speech_recognition as sr
 
 
 r = sr.Recognizer()  # インスタンス
-os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
+# os.chdir(os.path.dirname(__file__))  # カレントディレクトリを実行ファイルのパスに変更。以降のパスは実行ファイルからの相対パスを書くだけでいい。
 # audio_file_path = os.path.dirname(__file__).replace(os.sep, "/") + "/audio_file/from_client/user_voice.wav"
 audio_file_path = "audio_file/from_client/user_voice.wav"  # 出力先の設定
 
@@ -27,7 +27,7 @@ def recog_input_voice():
         return ""
 
 
-    # os.remove(audio_file_path)  # ファイルを削除
+    os.remove(audio_file_path)  # ファイルを削除
 
 
 if __name__ == "__main__":
