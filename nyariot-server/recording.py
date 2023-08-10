@@ -13,8 +13,14 @@ import numpy as np  # なんか表示出る
 
 
 # 定数
-threshold = 0.4  # 開始の閾値
-threshold_min = 0.2  # 終了の閾値
+threshold = 0.25  # 開始の閾値
+threshold_min = 0.05  # 終了の閾値
+'''
+自室: PC: 0.25: 0.05
+自室: イヤホンマイク: 
+うるさめの部屋: PC: 
+うるさめの部屋: イヤホンマイク: 
+'''
 chunk = 4096  # 2^12 一度に取得できるデータ上限4096
 format_paInt = pyaudio.paInt16  # 16bit resolution
 channel = 1  # 1 channel
