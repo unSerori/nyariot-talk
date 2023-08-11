@@ -27,7 +27,8 @@ import requests  # 鯖の疎通確認
 import time  # 一時停止
 # 自作もじゅーる
 import recording  # 録音する
-import vv_transcribe_audio  # 文字起こし
+import vv_transcribe_audio  # 文字起こし speech_recognition 速度重視
+import vv_transcribe_audio_whisper  # 文字起こし whisper 精度重視
 import nyariot_talk  # チャットGPTに投げる
 import vv_gen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
 # import vv_nogen_afile  # テキストを、クエリデータ生成してvv_engineに投げる
@@ -65,7 +66,7 @@ while True:
         pass
 
 
-print("本処理開始＾～") # debug
+print("本処理開始＾～\n") # debug
 
 
 # 全体をwhileで回し続ける
@@ -75,7 +76,8 @@ while True:
 
 
     # 文字起こし
-    recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
+    # recog_text = vv_transcribe_audio.recog_input_voice()  # テキストデータにしてもらう
+    recog_text = vv_transcribe_audio_whisper.recog_input_voice()  # テキストデータにしてもらう
 
 
     if recog_text:  # 変数の中身が存在するなら
@@ -90,7 +92,6 @@ while True:
         # 再生しとく 本来は # 生成物をクライアントに投げて再生してもらう******************
         play_audio_test.play_wav_audio("vv_voice.wav")
 
-
     else:   # 文字起こせなかったらchatGPTをスキップ
         chat_text = "ごめん、よく聞こえなかった" 
         print("debug: chat_text: " + chat_text + " (エラー)")  # debug
@@ -98,4 +99,5 @@ while True:
         # 再生しとく 本来は # 生成物をクライアントに投げて再生してもらう******************
         play_audio_test.play_wav_audio("vv_voice_could_not_be_transcribed.wav")
 
-    print("")
+
+    print("\n")  # ループ毎の改行
